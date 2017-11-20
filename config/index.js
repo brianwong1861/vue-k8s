@@ -11,12 +11,12 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '**' : {
-        target: 'http://192.168.151.44:5555',
+      '/' : {
+        target: 'http://192.168.89.47:8000',
         changeOrigin: true,
-        headers: {
-          "Authorization": "Bearer Y7mLAOpgqzSzePXrEOw6QJq1e6nONKfm"
-        },
+        // headers: {
+        //   Authorization: "Bearer Y7mLAOpgqzSzePXrEOw6QJq1e6nONKfm"
+        // },
         secure: false,
       },
      },

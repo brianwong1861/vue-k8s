@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hosts from '@/components/hosts'
+import HostsInfo from '@/components/nodes/hostsInfo'
 import Topology from '@/components/topology'
 
 Vue.use(Router)
@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hosts',
-      component: Hosts
+      name: 'HostsInfo',
+      component: HostsInfo
     },
     {
       path: '/topology',

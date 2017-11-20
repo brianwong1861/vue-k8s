@@ -12,6 +12,9 @@
   "dependencies": {
     "d3": "^4.11.0",
     "express": "^4.16.2",
+    "jquery": "^3.2.1",
+    "node-sass": "^4.7.1",
+    "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "webkit": "0.0.0"

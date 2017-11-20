@@ -19,13 +19,13 @@
             <span>{{ props.row.status.addresses[0].address }}</span>
           </el-form-item>
           <el-form-item label="節點IP分配">
-            <span>{{ props.row.spec.podCIDR }}</span>
+            <span>{{ props.row.spec.pod_cidr }}</span>
           </el-form-item>
           <el-form-item label="狀態">
             <span>{{ props.row.status.conditions[3].status }}</span>
           </el-form-item>
           <el-form-item label="系统">
-            <span>{{ props.row.status.nodeInfo.osImage }}</span>
+            <span>{{ props.row.status.node_info.os_image }}</span>
           </el-form-item>
         </el-form>
       </template>
@@ -44,15 +44,18 @@
     </el-table-column>
     <el-table-column
       label="生成時間"
-      prop="metadata.creationTimestamp">
+      prop="metadata.creation_timestamp">
     </el-table-column>
   </el-table>   
   </div>
 </template>
+
 <style>
 
 #hosts{
   margin-top: 30px;
+  border: 1px solid #c0c0c0;
+  
 }
 .demo-table-expand {
   font-size: 0;
@@ -71,15 +74,19 @@
 <script>
 
 import axios from "axios";
+import RestartPod from "./restartPod"
 
-
-// export const httpInstance = axios.create({
-//   // baseURL: `https://192.168.151.40:443/`,
-//   baseURL: `http://127.0.0.1:8001/`,
+// export const instance = axios.create({
+//   baseURL: 'http://192.168.89.47:8000/',
+//   // baseURL: `http://127.0.0.1:8001/`,
 //   // method: "jsonp",
 //   headers: {
 //     Authorization: "Bearer Y7mLAOpgqzSzePXrEOw6QJq1e6nONKfm"
-//   }
+//   },
+//   auth: {
+//     username: 'kube',
+//     password: 'allbright'
+//   },
 // });
 
 export default {
@@ -89,9 +96,9 @@ export default {
     };
   },
   mounted() {
-
-      axios.get('/api/v1/nodes')
+      axios.get('api/nodes')
       .then(response => {
+        
         this.tableData5 = response.data.items
       })
       .catch(error => {
