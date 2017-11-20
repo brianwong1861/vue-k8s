@@ -11,15 +11,16 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/' : {
-        target: 'https://192.168.151.40:443',
+      '**' : {
+        target: 'http://192.168.151.44:5555',
         changeOrigin: true,
-        pathRewrite: {
-          '^/': '/'
+        headers: {
+          "Authorization": "Bearer Y7mLAOpgqzSzePXrEOw6QJq1e6nONKfm"
         },
-        secure: false
-      }
+        secure: false,
+      },
      },
+    
 
     // Various Dev Server settings
     host: '192.168.89.47', // can be overwritten by process.env.HOST

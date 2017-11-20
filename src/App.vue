@@ -14,7 +14,7 @@
     <el-menu-item index="2-1">正在運行</el-menu-item>
     <el-menu-item index="2-2">已停止</el-menu-item>
     </el-submenu>
-  <el-menu-item index="3">系統拓撲</el-menu-item>
+  <el-menu-item index="3"><router-link to="/topology">系统拓撲</router-link></el-menu-item>
   <el-menu-item index="4">系統設定</el-menu-item>
 </el-menu>
 
@@ -48,5 +48,8 @@ export default {
   padding: 0;
   margin: 0;
   border: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow: hidden; 
 }
+
 </style>

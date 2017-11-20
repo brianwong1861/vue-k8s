@@ -1,4 +1,5 @@
 <template>
+<div id=hosts>
   <el-table
     :data="tableData5"
     style="width: 100%">
@@ -38,17 +39,26 @@
       prop="metadata.name">
     </el-table-column>
     <el-table-column
+      label="節點狀態"
+      prop="status.conditions[3].status">
+    </el-table-column>
+    <el-table-column
       label="生成時間"
       prop="metadata.creationTimestamp">
     </el-table-column>
   </el-table>   
+  </div>
 </template>
 <style>
+
+#hosts{
+  margin-top: 30px;
+}
 .demo-table-expand {
   font-size: 0;
 }
 .demo-table-expand label {
-  width: 90px;
+  width: 100px;
   color: #99a9bf;
 }
 .demo-table-expand .el-form-item {
@@ -82,9 +92,11 @@ export default {
 
       axios.get('/api/v1/nodes')
       .then(response => {
-        console.log(response.data.items);
         this.tableData5 = response.data.items
       })
+      .catch(error => {
+        alert('Error')
+      })
+      }
   }
-};
 </script>
