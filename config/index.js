@@ -11,6 +11,14 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      '/' : {
+        target: 'https://192.168.151.40:443',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/': '/'
+        },
+        secure: false
+      }
      },
 
     // Various Dev Server settings

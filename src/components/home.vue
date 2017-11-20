@@ -59,18 +59,18 @@
 </style>
 
 <script>
-import Vue from "vue";
+
 import axios from "axios";
 
 
-export const httpInstance = axios.create({
-  // baseURL: `https://192.168.151.40:443/`,
-  baseURL: `http://127.0.0.1:8001/`,
-  // method: "jsonp",
-  headers: {
-    Authorization: "Bearer Y7mLAOpgqzSzePXrEOw6QJq1e6nONKfm"
-  }
-});
+// export const httpInstance = axios.create({
+//   // baseURL: `https://192.168.151.40:443/`,
+//   baseURL: `http://127.0.0.1:8001/`,
+//   // method: "jsonp",
+//   headers: {
+//     Authorization: "Bearer Y7mLAOpgqzSzePXrEOw6QJq1e6nONKfm"
+//   }
+// });
 
 export default {
   data() {
@@ -78,9 +78,9 @@ export default {
       tableData5: []
     };
   },
-  created() {
-    httpInstance
-      .get(`api/v1/nodes`)
+  mounted() {
+
+      axios.get('/api/v1/nodes')
       .then(response => {
         console.log(response.data.items);
         this.tableData5 = response.data.items
