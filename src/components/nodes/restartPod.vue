@@ -1,30 +1,44 @@
 <template>
-  <div>
-      <el-transfer v-model="value1" :data="data"></el-transfer>
-
+  <div id="restartpod">
+    <el-table
+    :data="tableData"
+    border
+    style="width: 100%">
+    <el-table-column
+      prop="name"
+      label="名称"
+     >
+    </el-table-column>
+    <el-table-column
+      prop="restart_count"
+      label="重启次数"
+     >
+    </el-table-column>
+  </el-table>
   </div>
 </template>
 <style>
 
 </style>
 <script>
- export default {
-    data() {
-      const generateData = _ => {
-        const data = [];
-        for (let i = 1; i <= 15; i++) {
-          data.push({
-            key: i,
-            label: `备选项 ${ i }`,
-            disabled: i % 4 === 0
-          });
-        }
-        return data;
-      };
-      return {
-        data: generateData(),
-        value1: [1, 4]
-      };
-    }
-  };
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      tableData: []
+    };
+  },
+  mounted() {
+    axios
+      .get("api/pods/restart")
+      .then(response => {
+        this.tableData = response.data.data;
+
+      })
+      .catch(error => {
+        alert("Error");
+      });
+  }
+};
 </script>

@@ -1,11 +1,14 @@
 <template>
 <div id=hosts>
-  <el-table
-    :data="tableData5"
+  <el-row :gutter="20">
+  <el-col :span="16"><div class="grid-content bg-purple">
+    <el-table
+    :data="tableData"
+    border
     style="width: 100%">
     <el-table-column type="expand">
       <template slot-scope="props">
-        <el-form label-position="left" inline class="demo-table-expand">
+        <el-form label-position="left" inline class="table-expand">
           <el-form-item label="節點名称">
             <span>{{ props.row.metadata.name }}</span>
           </el-form-item>
@@ -46,25 +49,35 @@
       label="生成時間"
       prop="metadata.creation_timestamp">
     </el-table-column>
-  </el-table>   
+  </el-table>  
+    </div></el-col>
+    
+  <el-col :span="8">
+    
+    <div class="grid-content bg-purple">
+      <transition enter-active-class="bounceInRight" leave-active-class="bounceOutRight">
+      <RestartPod v-show="show" class="animated"></RestartPod>
+       </transition>      
+      </div>
+      
+    </el-col>
+</el-row> 
+  
   </div>
 </template>
 
 <style>
-
-#hosts{
+#hosts {
   margin-top: 30px;
-  border: 1px solid #c0c0c0;
-  
 }
-.demo-table-expand {
+.table-expand {
   font-size: 0;
 }
-.demo-table-expand label {
+.table-expand label {
   width: 100px;
   color: #99a9bf;
 }
-.demo-table-expand .el-form-item {
+.table-expand .el-form-item {
   margin-right: 0;
   margin-bottom: 0;
   width: 80%;
@@ -72,9 +85,8 @@
 </style>
 
 <script>
-
 import axios from "axios";
-import RestartPod from "./restartPod"
+import RestartPod from "./restartPod";
 
 // export const instance = axios.create({
 //   baseURL: 'http://192.168.89.47:8000/',
@@ -92,18 +104,23 @@ import RestartPod from "./restartPod"
 export default {
   data() {
     return {
-      tableData5: []
+      tableData: [],
+      show: false
     };
   },
+  components: {
+    RestartPod
+  },
   mounted() {
-      axios.get('api/nodes')
+    axios
+      .get("api/nodes")
       .then(response => {
-        
-        this.tableData5 = response.data.items
+        this.tableData = response.data.items;
+        this.show = true
       })
       .catch(error => {
-        alert('Error')
-      })
-      }
+        alert("Error");
+      });
   }
+};
 </script>
