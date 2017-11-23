@@ -7,7 +7,7 @@
     border
     style="width: 100%">
     <el-table-column type="expand">
-      <template slot-scope="props">
+      <template slot-scope="props" >
         <el-form label-position="left" inline class="table-expand">
           <el-form-item label="節點名称">
             <span>{{ props.row.metadata.name }}</span>
@@ -105,7 +105,7 @@ export default {
   data() {
     return {
       tableData: [],
-      show: false
+      show: false,
     };
   },
   components: {
@@ -121,6 +121,7 @@ export default {
       .catch(error => {
         alert("Error");
       });
-  }
+  },
+
 };
 </script>
