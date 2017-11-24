@@ -6,8 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import 'animate.css'
 import router from './router'
 import App from './App'
-import 'svg.js'
-import 'svg-tags'
+
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
