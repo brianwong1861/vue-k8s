@@ -86,7 +86,7 @@
 
 <script>
 import axios from "axios";
-import RestartPod from "./restartPod";
+import RestartPod from "../restartPod";
 
 // export const instance = axios.create({
 //   baseURL: 'http://192.168.89.47:8000/',

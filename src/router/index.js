@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HostsInfo from '@/components/nodes/hostsInfo'
-import Topology from '@/components/topology'
+import Deployment from '@/components/deployment'
 
 Vue.use(Router)
 
@@ -15,9 +15,9 @@ export default new Router({
       component: HostsInfo
     },
     {
-      path: '/topology',
-      name: 'topology',
-      component: Topology
+      path: '/deployment',
+      name: 'deployment',
+      component: Deployment
     }
   ]
 })
